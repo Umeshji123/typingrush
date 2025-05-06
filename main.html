@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Typing Master: Fun typing test to boost speed & accuracy in a serene setting.">
+  <meta name="keywords" content="typing test, typing master, typing speed, typing practice, online typing game, improve typing skills, typing tips">
+  <meta name="author" content="Typing Master Team">
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Typing Master - Test Your Typing Skills">
+  <meta property="og:description" content="Improve your typing speed and accuracy with Typing Master, a fun and engaging typing test.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.typingmaster.example.com/">
+  <meta property="og:image" content="https://www.typingmaster.example.com/images/typing-master-og.jpg">
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Typing Master - Test Your Typing Skills">
+  <meta name="twitter:description" content="Improve your typing speed and accuracy with Typing Master, a fun and engaging typing test.">
+  <meta name="twitter:image" content="https://www.typingmaster.example.com/images/typing-master-og.jpg">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>Typing Master - Test Typing Speed</title>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f8fafc;
+      text-align: center;
+      line-height: 1.6;
+      color: #1f2a44;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    body.dark-mode {
+      background-color: #1a202c;
+      color: #e2e8f0;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: linear-gradient(145deg, #ffffff, #f1f5f9);
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      border: 1px solid #e2e8f0;
+      box-sizing: border-box;
+      transition: background 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
+    }
+    body.dark-mode .container {
+      background: linear-gradient(145deg, #2d3748, #1a202c);
+      border: 1px solid #4a5568;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    }
+    /* Header Styles */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #e2e8f0;
+      margin-bottom: 20px;
+      transition: border 0.3s ease;
+    }
+    body.dark-mode header {
+      border-bottom: 1px solid #4a5568;
+    }
+    .logo {
+      font-size: 24px;
+      font-weight: 700;
+      color: #319795;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    body.dark-mode .logo {
+      color: #81e6d9;
+    }
+    .logo:hover {
+      color: #38b2ac;
+    }
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+    nav a {
+      font-size: 16px;
+      font-weight: 500;
+      color: #4a5568;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    body.dark-mode nav a {
+      color: #cbd5e0;
+    }
+    nav a:hover, nav a.active {
+      color: #319795;
+    }
+    body.dark-mode nav a:hover, body.dark-mode nav a.active {
+      color: #81e6d9;
+    }
+    h1 {
+      color: #319795;
+      font-size: 40px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      transition: color 0.3s ease;
+    }
+    body.dark-mode h1 {
+      color: #81e6d9;
+    }
+    h2 {
+      color: #319795;
+      font-size: 28px;
+      font-weight: 600;
+      margin-top: 32px;
+      transition: color 0.3s ease;
+    }
+    body.dark-mode h2 {
+      color: #81e6d9;
+    }
+    h3 {
+      color: #319795;
+      font-size: 20px;
+      font-weight: 600;
+      margin-top: 24px;
+      transition: color 0.3s ease;
+    }
+    body.dark-mode h3 {
+      color: #81e6d9;
+    }
+    p, li {
+      font-size: 16px;
+      color: #4a5568;
+      margin: 12px 0;
+      transition: color 0.3s ease;
+    }
+    body.dark-mode p, body.dark-mode li {
+      color: #cbd5e0;
+    }
+    ul {
+      list-style: disc inside;
+      text-align: left;
+      padding: 0 20px;
+    }
+    #sample-text {
+      background: #edf2f7;
+      padding: 16px;
+      margin: 24px 12px;
+      font-size: 16px;
+      border-radius: 12px;
+      border: 1px solid #e2e8f0;
+      color: #1f2a44;
+      box-sizing: border-box;
+      max-height: 200px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+      text-align: left;
+      transition: background 0.3s ease, color 0.3s ease, border 0.3s ease;
+    }
+    body.dark-mode #sample-text {
+      background: #2d3748;
+      border: 1px solid #4a5568;
+      color: #e2e8f0;
+    }
+    #sample-text .word {
+      margin-right: 5px;
+    }
+    #sample-text .current {
+      background-color: #81e6d9;
+      color: #1f2a44;
+      border-radius: 4px;
+      padding: 2px 4px;
+    }
+    body.dark-mode #sample-text .current {
+      background-color: #2c7a7b;
+      color: #e2e8f0;
+    }
+    #sample-text .incorrect {
+      background-color: #fed7d7;
+    }
+    body.dark-mode #sample-text .incorrect {
+      background-color: #c53030;
+    }
+    #input-text {
+      width: calc(100% - 24px);
+      height: 120px;
+      font-size: 16px;
+      padding: 16px;
+      margin: 0 12px 24px 12px;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      resize: none;
+      background: #ffffff;
+      color: #1f2a44;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      box-sizing: border-box;
+      transition: background 0.3s ease, color 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
+    }
+    body.dark-mode #input-text {
+      background: #2d3748;
+      border: 1px solid #4a5568;
+      color: #e2e8f0;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+    #input-text:focus {
+      outline: none;
+      border-color: #319795;
+      box-shadow: 0 0 0 3px rgba(49, 151, 149, 0.2);
+    }
+    #start-btn, #reset-btn, #clear-scores-btn, #dark-mode-btn, #close-popup-btn {
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: 500;
+      margin: 8px;
+      cursor: pointer;
+      background: #ed8936;
+      color: #ffffff;
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    }
+    #start-btn {
+      background: #319795;
+      font-weight: 600;
+    }
+    body.dark-mode #start-btn, body.dark-mode #reset-btn, body.dark-mode #clear-scores-btn, body.dark-mode #dark-mode-btn, body.dark-mode #close-popup-btn {
+      background: #2c7a7b;
+      color: #e2e8f0;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+    body.dark-mode #start-btn {
+      background: #2c7a7b;
+    }
+    #start-btn:hover, #reset-btn:hover, #clear-scores-btn:hover, #dark-mode-btn:hover, #close-popup-btn:hover {
+      background: #38b2ac;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    body.dark-mode #start-btn:hover, body.dark-mode #reset-btn:hover, body.dark-mode #clear-scores-btn:hover, body.dark-mode #dark-mode-btn:hover, body.dark-mode #close-popup-btn:hover {
+      background: #319795;
+    }
+    #timer {
+      font-size: 20px;
+      font-weight: 600;
+      color: #e53e3e;
+      margin: 16px 0;
+      transition: color 0.3s ease;
+    }
+    body.dark-mode #timer {
+      color: #f687b3;
+    }
+    #progress-bar {
+      width: calc(100% - 24px);
+      height: 12px;
+      margin: 16px auto;
+      background: #edf2f7;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      overflow: hidden;
+      transition: background 0.3s ease, border 0.3s ease;
+    }
+    body.dark-mode #progress-bar {
+      background: #2d3748;
+      border: 1px solid #4a5568;
+    }
+    #progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(to right, #319795, #38b2ac);
+      width: 100%;
+      transition: width 0.3s ease;
+    }
+    body.dark-mode #progress-bar-fill {
+      background: linear-gradient(to right, #2c7a7b, #319795);
+    }
+    #timer-select, #difficulty-select {
+      padding: 12px;
+      font-size: 16px;
+      margin: 8px;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      background: #ffffff;
+      color: #1f2a44;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      box-sizing: border-box;
+      transition: background 0.3s ease, color 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
+    }
+    body.dark-mode #timer-select, body.dark-mode #difficulty-select {
+      background: #2d3748;
+      border: 1px solid #4a5568;
+      color: #e2e8f0;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+    #timer-select:focus, #difficulty-select:focus {
+      outline: none;
+      border-color: #319795;
+      box-shadow: 0 0 0 3px rgba(49, 151, 149, 0.2);
+    }
+    #result {
+      display: none; /* Hide the result div */
+    }
+    #high-scores {
+      margin: 24px 12px;
+      font-size: 16px;
+      color: #319795;
+      background: #edf2f7;
+      padding: 16px;
+      border-radius: 12px;
+      border: 1px solid #e2e8f0;
+      box-sizing: border-box;
+      transition: background 0.3s ease, color 0.3s ease, border 0.3s ease;
+    }
+    body.dark-mode #high-scores {
+      color: #81e6d9;
+      background: #2d3748;
+      border: 1px solid #4a5568;
+    }
+    #high-scores ul {
+      list-style: none;
+      padding: 0;
+    }
+    #high-scores li {
+      margin: 8px 0;
+    }
+    .ad-placeholder {
+      background: #edf2f7;
+      padding: 16px;
+      margin: 24px 12px;
+      border: 1px dashed #e2e8f0;
+      border-radius: 12px;
+      color: #718096;
+      box-sizing: border-box;
+      transition: background 0.3s ease, color 0.3s ease, border 0.3s ease;
+    }
+    body.dark-mode .ad-placeholder {
+      background: #2d3748;
+      border: 1px dashed #4a5568;
+      color: #a0aec0;
+    }
+    /* Popup Styles */
+    .popup-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+    .popup-content {
+      background: #ffffff;
+      padding: 24px;
+      border-radius: 16px;
+      max-width: 500px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      transition: background 0.3s ease;
+    }
+    body.dark-mode .popup-content {
+      background: #2d3748;
+    }
+    .popup-content h3 {
+      margin-top: 0;
+    }
+    .popup-content p {
+      font-size: 18px;
+      font-weight: 500;
+      color: #319795;
+    }
+    body.dark-mode .popup-content p {
+      color: #81e6d9;
+    }
+    footer {
+      margin-top: 48px;
+      font-size: 14px;
+      color: #4a5568;
+      transition: color 0.3s ease;
+    }
+    body.dark-mode footer {
+      color: #cbd5e0;
+    }
+    footer a {
+      color: #319795;
+      text-decoration: none;
+      margin: 0 12px;
+      transition: color 0.3s ease;
+    }
+    body.dark-mode footer a {
+      color: #81e6d9;
+    }
+    footer a:hover {
+      color: #38b2ac;
+      text-decoration: underline;
+    }
+    @media (max-width: 600px) {
+      .container {
+        padding: 20px;
+      }
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      nav {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        align-items: center;
+      }
+      h1 {
+        font-size: 32px;
+      }
+      h2 {
+        font-size: 24px;
+      }
+      h3 {
+        font-size: 18px;
+      }
+      p, li {
+        font-size: 14px;
+      }
+      #sample-text, #input-text, #result, .ad-placeholder, #high-scores {
+        margin: 12px 8px;
+      }
+      #input-text {
+        height: 100px;
+        padding: 12px;
+      }
+      #start-btn, #reset-btn, #clear-scores-btn, #dark-mode-btn, #close-popup-btn, #timer-select, #difficulty-select {
+        padding: 10px 20px;
+        font-size: 14px;
+      }
+      .popup-content {
+        padding: 16px;
+      }
+      .popup-content p {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a href="main.html" class="logo" aria-label="Typing Master Home">Typing Master</a>
+      <nav role="navigation" aria-label="Main navigation">
+        <a href="main.html" class="active" aria-current="page">Home</a>
+        <a href="tutorial.html">Tutorial</a>
+        <a href="assests/index.html">Practice</a>
+        <a href="lesson.html">Lesson</a>
+      </nav>
+    </header>
+    <h1 id="main-heading">Typing Master</h1>
+    <p>Test your typing speed and accuracy with Typing Master. Choose a difficulty and start typing!</p>
+    
+    <!-- AdSense Placeholder -->
+    <div class="ad-placeholder">
+      <p>AdSense Ad Placeholder (Insert your AdSense code here)</p>
+    </div>
+    
+    <div id="timer" aria-live="polite">Time: 25 seconds</div>
+    <div id="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100">
+      <div id="progress-bar-fill"></div>
+    </div>
+    <label for="difficulty-select" class="sr-only">Select Difficulty</label>
+    <select id="difficulty-select" aria-label="Select difficulty level">
+      <option value="easy">Easy</option>
+      <option value="medium" selected>Medium</option>
+      <option value="hard">Hard</option>
+    </select>
+    <label for="timer-select" class="sr-only">Select Timer</label>
+    <select id="timer-select" aria-label="Select timer duration">
+      <option value="15">15 seconds</option>
+      <option value="25" selected>25 seconds</option>
+      <option value="30">30 seconds</option>
+      <option value="60">60 seconds</option>
+    </select>
+    <button id="dark-mode-btn" aria-label="Toggle dark mode" alt="Toggle dark or light mode">Toggle Dark Mode</button>
+    <div id="sample-text" role="region" aria-label="Sample text to type"></div>
+    <label for="input-text" class="sr-only">Type the sample text here</label>
+    <textarea id="input-text" placeholder="Click 'Start' and type the text above..." disabled aria-label="Typing input area"></textarea>
+    <button id="start-btn" aria-label="Start typing test" alt="Begin the typing test">Start Test</button>
+    <button id="reset-btn" style="display: none;" aria-label="Reset typing test" alt="Reset the typing test">Reset Test</button>
+    <button id="clear-scores-btn" aria-label="Clear high scores" alt="Clear all high scores">Clear High Scores</button>
+    <div id="result" role="alert"></div>
+    <div id="high-scores">
+      <h3>High Scores</h3>
+      <ul id="high-scores-list" aria-label="List of high scores"></ul>
+    </div>
+    
+    <!-- Popup Modal -->
+    <div id="result-popup" class="popup-overlay" role="dialog" aria-labelledby="popup-title" aria-modal="true">
+      <div class="popup-content">
+        <h3 id="popup-title">Test Results</h3>
+        <p id="popup-result"></p>
+        <button id="close-popup-btn" aria-label="Close results popup" alt="Close the results popup">Close</button>
+      </div>
+    </div>
+    
+    <!-- New Content Section: Why Improve Your Typing Skills? -->
+    <div id="typing-benefits">
+      <h2>Why Improve Your Typing Skills?</h2>
+      <p>Typing is a fundamental skill in today’s digital world. Enhancing your typing speed and accuracy can bring numerous benefits:</p>
+      <ul>
+        <li><strong>Boost Productivity:</strong> Type faster to complete tasks like emails, reports, or coding more efficiently, saving valuable time.</li>
+        <li><strong>Enhance Communication:</strong> Quick and accurate typing improves online communication, whether you’re chatting, posting, or collaborating.</li>
+        <li><strong>Career Advantage:</strong> Many jobs require proficient typing skills, from data entry to programming, giving you a competitive edge.</li>
+        <li><strong>Reduce Fatigue:</strong> Proper typing techniques reduce strain, making long typing sessions more comfortable and sustainable.</li>
+      </ul>
+      <p>With Typing Master, you can practice regularly, track your progress, and turn typing into a fun, rewarding experience!</p>
+    </div>
+    
+    <!-- New Content Section: Typing Tips for Beginners -->
+    <div id="typing-tips">
+      <h2>Typing Tips for Beginners</h2>
+      <p>Want to improve your typing skills? Here are some practical tips to get you started:</p>
+      <ul>
+        <li><strong>Learn Proper Hand Placement:</strong> Place your fingers on the home row (A-S-D-F for the left hand, J-K-L-; for the right hand) to build muscle memory.</li>
+        <li><strong>Start Slow, Focus on Accuracy:</strong> Speed comes with practice, but accuracy is key. Avoid mistakes by typing deliberately at first.</li>
+        <li><strong>Use All Fingers:</strong> Train yourself to use all fingers instead of just a few. This distributes the workload and increases efficiency.</li>
+        <li><strong>Practice Regularly:</strong> Dedicate 10–15 minutes daily to typing practice. Consistency leads to steady improvement.</li>
+        <li><strong>Take Breaks:</strong> Avoid strain by taking short breaks during long typing sessions to rest your hands and maintain focus.</li>
+        <li><strong>Use Typing Master:</strong> Our game offers various difficulty levels and timers to help you practice effectively and track your progress.</li>
+      </ul>
+    </div>
+    
+    <footer>
+      <p>© 2025 Typing Master. Crafted with love for typing enthusiasts.</p>
+      <p>
+        <a href="about.html" alt="Learn about Typing Master">About Us</a> | 
+        <a href="privacy.html" alt="View Typing Master Privacy Policy">Privacy Policy</a> | 
+        <a href="terms.html" alt="View Typing Master Terms of Service">Terms of Service</a> | 
+        <a href="contact.html" alt="Contact Typing Master Support">Contact</a>
+      </p>
+    </footer>
+  </div>
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Typing Master",
+    "url": "https://www.typingmaster.example.com/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://www.typingmaster.example.com/search?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    },
+    "description": "Typing Master offers a fun and engaging typing test to improve your typing speed and accuracy."
+  }
+  </script>
+
+  <script>
+    const easyTexts = [
+      "The gentle wind whispers through the ancient trees, carrying tales of forgotten spirits and dreams of a serene world.",
+      "A sparkling river dances over smooth stones, reflecting the golden light of dawn in a quiet, peaceful valley.",
+      "In a quiet meadow, tiny creatures weave intricate stories under the soft glow of fireflies on a warm night.",
+      "Soft clouds drift lazily across a sky painted in hues of peach and lavender, casting gentle shadows below.",
+      "An old lantern flickers, casting warm light on a path lined with ferns, inviting travelers to explore deeper.",
+      "The forest hums with secrets, shared only with those who listen closely to the whispers of the ancient trees.",
+      "A lone fox darts through the grass, its tail a flash of fiery red under the silver glow of a full moon.",
+      "Moonlight spills over the valley, bathing the world in silver and silence, as stars twinkle softly above.",
+      "Petals fall like gentle rain, carried by a breeze that smells of spring and whispers of new beginnings.",
+      "The ancient bridge creaks, telling stories of travelers long gone, as ivy clings to its weathered stones.",
+      "Stars twinkle above a village nestled in the embrace of rolling hills, glowing with quiet warmth and peace.",
+      "A tiny spirit hides in the roots of a tree, giggling at passersby as the forest wakes with the dawn’s light.",
+      "The scent of pine fills the air as the forest wakes at dawn, with birds singing softly in the treetops.",
+      "A butterfly flutters through a garden, chasing the warmth of the sun as flowers bloom in vibrant colors.",
+      "Waves lap gently at the shore, singing a lullaby to the night under a sky filled with countless stars.",
+      "A stone wall crumbles softly, embraced by ivy’s green arms, as the wind carries whispers of old tales"
+    ];
+    const mediumTexts = [
+      "The gentle wind whispers through the ancient trees, carrying tales of forgotten spirits who once wandered these woods under a starlit sky. A soft breeze weaves through the branches, stirring leaves that tell stories of old.",
+      "A sparkling river dances over smooth stones, reflecting the golden light of dawn. Its gentle ripples sing a song of peace, inviting travelers to pause and listen to the quiet symphony of nature in the early morning light.",
+      "In a quiet meadow, tiny creatures weave intricate stories under the soft glow of fireflies. The night air hums with their whispers, as the grass sways gently, cradling secrets of the forest in its tender embrace.",
+      "Soft clouds drift lazily across a sky painted in hues of peach and lavender, casting gentle shadows over rolling hills. The world below basks in the warmth of a sun that rises slowly, painting the dawn with hope.",
+      "An old lantern flickers, casting warm light on a path lined with ferns. The forest seems to breathe, its heartbeat echoing in the rustle of leaves and the distant call of an owl, guiding wanderers through the night.",
+      "The forest hums with secrets, shared only with those who listen closely. Ancient trees stand tall, their roots entwined with tales of forgotten heroes, whispered in the wind that dances through their branches at dusk.",
+      "A lone fox darts through the grass, its tail a flash of fiery red under the moon’s soft glow. The meadow sparkles with dew, each drop reflecting the silver light, as the night unfolds its quiet, magical beauty.",
+      "Moonlight spills over the valley, bathing the world in silver and silence. Stars twinkle above, each a story waiting to be told, as the night wraps the earth in a gentle embrace, whispering dreams to those who listen.",
+      "Petals fall like gentle rain, carried by a breeze that smells of spring. The garden blooms with vibrant colors, each flower a note in nature’s symphony, singing of hope and renewal under the warm sun’s tender gaze.",
+      "The ancient bridge creaks, telling stories of travelers long gone. Ivy clings to its stones, weaving a tapestry of green that holds memories of countless footsteps echoing across the river under the twilight sky.",
+      "Stars twinkle above a village nestled in rolling hills, glowing with warmth. The night is alive with the soft hum of life, as lanterns sway in the breeze, casting golden light on paths that lead to dreams.",
+      "A tiny spirit hides in the roots of a tree, giggling at passersby. The forest wakes with dawn’s light, its air filled with the scent of pine and the gentle song of birds welcoming a new day’s promise.",
+      "The scent of pine fills the air as the forest wakes at dawn. Birds sing in the treetops, their melodies weaving through the mist, while the first rays of sunlight paint the leaves with golden hues of hope.",
+      "A butterfly flutters through a garden, chasing the sun’s warmth. Flowers bloom in vibrant colors, their petals dancing in the breeze, as the morning unfolds in a quiet celebration of life and beauty.",
+      "Waves lap gently at the shore, singing a lullaby to the night. The sky above sparkles with stars, each a beacon of dreams, as the ocean whispers tales of distant lands to the moonlit sands below.",
+      "A stone wall crumbles softly, embraced by ivy’s green arms. The wind carries whispers of old tales, weaving through the ruins, as the earth holds memories of forgotten times in its quiet embrace"
+    ];
+    const hardTexts = [
+      "The gentle wind whispers through the ancient trees, carrying tales of forgotten spirits who once wandered these woods under a starlit sky. A soft breeze weaves through the branches, stirring leaves that tell stories of old heroes and lost dreams, as the forest breathes with a life of its own, alive with the magic of nature’s eternal song.",
+      "A sparkling river dances over smooth stones, reflecting the golden light of dawn in a quiet valley where time seems to stand still. Its gentle ripples sing a song of peace, inviting travelers to pause and listen to the quiet symphony of nature. The air is filled with the scent of wildflowers, and the distant call of a bird echoes through the morning mist.",
+      "In a quiet meadow, tiny creatures weave intricate stories under the soft glow of fireflies on a warm summer night. The grass sways gently, cradling secrets of the forest in its tender embrace. The air hums with whispers of ancient lore, as the stars above twinkle, each a beacon of hope in the vast canvas of the sky, guiding dreamers through the darkness.",
+      "Soft clouds drift lazily across a sky painted in hues of peach and lavender, casting gentle shadows over rolling hills that stretch endlessly into the horizon. The world below basks in the warmth of a sun that rises slowly, painting the dawn with hope. Birds soar above, their wings slicing through the air, carrying songs of freedom to the waking earth.",
+      "An old lantern flickers, casting warm light on a path lined with ferns in a forest that seems to breathe with life. The rustle of leaves and the distant call of an owl echo through the night, guiding wanderers deeper into the woods. The air is thick with the scent of moss and earth, and the stars peek through the canopy, whispering secrets of the universe.",
+      "The forest hums with secrets, shared only with those who listen closely to its soft whispers. Ancient trees stand tall, their roots entwined with tales of forgotten heroes who once sought refuge in these woods. The wind dances through the branches, carrying echoes of their laughter and tears, as the moonlight filters through, casting silver patterns on the forest floor.",
+      "A lone fox darts through the grass, its tail a flash of fiery red under the moon’s soft glow. The meadow sparkles with dew, each drop reflecting the silver light, as the night unfolds its quiet beauty. Crickets sing in harmony, their song blending with the rustle of leaves, creating a symphony that speaks of peace and the timeless rhythm of the earth.",
+      "Moonlight spills over the valley, bathing the world in silver and silence. Stars twinkle above, each a story waiting to be told, as the night wraps the earth in a gentle embrace. The air is cool, carrying the scent of pine and the distant murmur of a stream, while the shadows dance to the rhythm of the wind, weaving dreams into the fabric of the night.",
+      "Petals fall like gentle rain, carried by a breeze that smells of spring and new beginnings. The garden blooms with vibrant colors, each flower a note in nature’s symphony, singing of hope and renewal. Butterflies dance among the blossoms, their wings catching the sunlight, as the earth awakens in a quiet celebration of life under the warm sun’s gaze.",
+      "The ancient bridge creaks, telling stories of travelers long gone who crossed its weathered stones. Ivy clings to its structure, weaving a tapestry of green that holds memories of countless footsteps. The river below murmurs softly, its waters carrying tales of distant lands, as the twilight sky paints the scene in hues of purple and gold.",
+      "Stars twinkle above a village nestled in the embrace of rolling hills, glowing with quiet warmth. The night is alive with the soft hum of life, as lanterns sway in the breeze, casting golden light on paths that lead to dreams. The air is filled with the scent of woodsmoke and the gentle laughter of children, echoing through the peaceful valley.",
+      "A tiny spirit hides in the roots of a tree, giggling at passersby as the forest wakes with dawn’s light. The air is filled with the scent of pine and the gentle song of birds, their melodies weaving through the mist. Sunlight filters through the canopy, painting the leaves with golden hues, as the earth stirs in a quiet promise of a new day.",
+      "The scent of pine fills the air as the forest wakes at dawn, with birds singing in the treetops. The first rays of sunlight pierce the mist, painting the leaves with golden hues. A deer pauses in a clearing, its eyes bright with wisdom, as the forest hums with the quiet energy of life, inviting all who enter to share in its timeless beauty.",
+      "A butterfly flutters through a garden, chasing the warmth of the sun as flowers bloom in vibrant colors. The breeze carries the scent of lavender, and the hum of bees fills the air with life. The garden is a canvas of nature’s art, each petal a brushstroke in a masterpiece that celebrates the quiet joy of a spring morning.",
+      "Waves lap gently at the shore, singing a lullaby to the night under a sky filled with countless stars. The ocean whispers tales of distant lands, its voice a soothing melody that blends with the rustle of palm leaves. The moonlight dances on the water, casting silver ripples that carry dreams to the horizon.",
+      "A stone wall crumbles softly, embraced by ivy’s green arms, as the wind carries whispers of old tales. The ruins stand as silent guardians of forgotten times, their stones warmed by the sun. Wildflowers bloom in the cracks, adding color to the scene, as the earth holds memories of those who once walked these paths"
+    ];
+    let currentText = mediumTexts[0];
+    const sampleTextDiv = document.getElementById('sample-text');
+    const inputText = document.getElementById('input-text');
+    const startBtn = document.getElementById('start-btn');
+    const resetBtn = document.getElementById('reset-btn');
+    const clearScoresBtn = document.getElementById('clear-scores-btn');
+    const darkModeBtn = document.getElementById('dark-mode-btn');
+    const resultPopup = document.getElementById('result-popup');
+    const popupResult = document.getElementById('popup-result');
+    const closePopupBtn = document.getElementById('close-popup-btn');
+    const timerDiv = document.getElementById('timer');
+    const timerSelect = document.getElementById('timer-select');
+    const difficultySelect = document.getElementById('difficulty-select');
+    const highScoresList = document.getElementById('high-scores-list');
+    const progressBarFill = document.getElementById('progress-bar-fill');
+    let startTime, timerInterval, timeLeft = 25, totalTime = 25;
+
+    // Screen reader only class
+    const style = document.createElement('style');
+    style.textContent = '.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0; }';
+    document.head.appendChild(style);
+
+    // Debugging: Verify DOM elements
+    console.log('DOM elements loaded:', { sampleTextDiv, inputText, startBtn, resetBtn, clearScoresBtn, darkModeBtn, resultPopup, popupResult, closePopupBtn, timerDiv, timerSelect, difficultySelect, highScoresList, progressBarFill });
+
+    // Function to display text with word spans
+    function displayText(text) {
+      try {
+        const words = text.split(' ');
+        sampleTextDiv.innerHTML = words.map((word, index) => `<span class="word" id="word-${index}">${word}</span>`).join(' ');
+        console.log('Text displayed with spans:', { text, words });
+      } catch (e) {
+        console.error('Error in displayText:', e);
+      }
+    }
+
+    displayText(currentText);
+
+    // Load and display high scores from localStorage
+    function loadHighScores() {
+      try {
+        const highScores = JSON.parse(localStorage.getItem('highScores') || '[]');
+        highScoresList.innerHTML = '';
+        highScores.slice(0, 5).forEach((score, index) => {
+          const li = document.createElement('li');
+          li.textContent = `#${index + 1}: ${score.difficulty}, ${score.wpm} WPM, ${score.accuracy}% Accuracy, ${score.date}`;
+          highScoresList.appendChild(li);
+        });
+        console.log('High scores loaded:', highScores);
+      } catch (e) {
+        console.error('Error loading high scores:', e);
+      }
+    }
+
+    // Save a new high score
+    function saveHighScore(difficulty, wpm, accuracy) {
+      try {
+        const highScores = JSON.parse(localStorage.getItem('highScores') || '[]');
+        const date = new Date().toLocaleString();
+        highScores.push({ difficulty, wpm, accuracy, date });
+        highScores.sort((a, b) => b.wpm - a.wpm || b.accuracy - a.accuracy);
+        localStorage.setItem('highScores', JSON.stringify(highScores));
+        loadHighScores();
+        console.log('High score saved:', { difficulty, wpm, accuracy, date });
+      } catch (e) {
+        console.error('Error saving high score:', e);
+      }
+    }
+
+    // Clear high scores
+    clearScoresBtn.addEventListener('click', () => {
+      try {
+        localStorage.removeItem('highScores');
+        loadHighScores();
+        console.log('High scores cleared');
+      } catch (e) {
+        console.error('Error clearing high scores:', e);
+      }
+    });
+
+    // Initial load of high scores
+    loadHighScores();
+
+    // Load saved theme from localStorage
+    function loadTheme() {
+      try {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+          document.body.classList.add('dark-mode');
+          darkModeBtn.textContent = 'Toggle Light Mode';
+        } else {
+          document.body.classList.remove('dark-mode');
+          darkModeBtn.textContent = 'Toggle Dark Mode';
+        }
+        console.log('Theme loaded:', { savedTheme });
+      } catch (e) {
+        console.error('Error loading theme:', e);
+      }
+    }
+
+    // Toggle dark mode
+    darkModeBtn.addEventListener('click', () => {
+      try {
+        document.body.classList.toggle('dark-mode');
+        const isDarkMode = document.body.classList.contains('dark-mode');
+        darkModeBtn.textContent = isDarkMode ? 'Toggle Light Mode' : 'Toggle Dark Mode';
+        localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+        console.log('Dark mode toggled:', { isDarkMode });
+      } catch (e) {
+        console.error('Error in darkModeBtn click:', e);
+      }
+    });
+
+    // Load theme on page load
+    loadTheme();
+
+    // Update timer display when user changes selection
+    timerSelect.addEventListener('change', () => {
+      try {
+        timeLeft = parseInt(timerSelect.value);
+        totalTime = timeLeft;
+        timerDiv.textContent = `Time: ${timeLeft} seconds`;
+        progressBarFill.style.width = '100%';
+        console.log('Timer changed:', { timeLeft });
+      } catch (e) {
+        console.error('Error in timerSelect change:', e);
+      }
+    });
+
+    // Get random text based on difficulty
+    function getRandomText(difficulty) {
+      const textPool = difficulty === 'easy' ? easyTexts : difficulty === 'hard' ? hardTexts : mediumTexts;
+      return textPool[Math.floor(Math.random() * textPool.length)];
+    }
+
+    // Update text when difficulty changes
+    difficultySelect.addEventListener('change', () => {
+      try {
+        currentText = getRandomText(difficultySelect.value);
+        displayText(currentText);
+        console.log('Difficulty changed:', { difficulty: difficultySelect.value, currentText });
+      } catch (e) {
+        console.error('Error in difficultySelect change:', e);
+      }
+    });
+
+    // Debounce utility function
+    function debounce(func, wait) {
+      let timeout;
+      return function (...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, args), wait);
+      };
+    }
+
+    // Show popup with results
+    function showPopup(message) {
+      popupResult.textContent = message;
+      resultPopup.style.display = 'flex';
+      closePopupBtn.focus();
+      console.log('Popup shown:', { message });
+    }
+
+    // Close popup
+    closePopupBtn.addEventListener('click', () => {
+      resultPopup.style.display = 'none';
+      startBtn.focus();
+      console.log('Popup closed');
+    });
+
+    // Close popup on Esc key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && resultPopup.style.display === 'flex') {
+        resultPopup.style.display = 'none';
+        startBtn.focus();
+        console.log('Popup closed via Esc key');
+      }
+    });
+
+    startBtn.addEventListener('click', () => {
+      try {
+        console.log('Start button clicked');
+        inputText.disabled = false;
+        inputText.focus();
+        console.log('Input text enabled and focused');
+        startBtn.style.display = 'none';
+        resetBtn.style.display = 'inline-block';
+        timerSelect.disabled = true;
+        difficultySelect.disabled = true;
+        inputText.value = '';
+        resultPopup.style.display = 'none';
+        startTime = new Date();
+        timeLeft = parseInt(timerSelect.value);
+        totalTime = timeLeft;
+        timerDiv.textContent = `Time: ${timeLeft} seconds`;
+        progressBarFill.style.width = '100%';
+        timerInterval = setInterval(updateTimer, 1000);
+        inputText.addEventListener('input', debouncedCheckTyping);
+        console.log('Test started:', { difficulty: difficultySelect.value, timeLeft, currentText });
+      } catch (e) {
+        console.error('Error in startBtn click:', e);
+      }
+    });
+
+    resetBtn.addEventListener('click', () => {
+      try {
+        console.log('Reset button clicked');
+        inputText.disabled = true;
+        inputText.value = '';
+        startBtn.style.display = 'inline-block';
+        resetBtn.style.display = 'none';
+        timerSelect.disabled = false;
+        difficultySelect.disabled = false;
+        resultPopup.style.display = 'none';
+        clearInterval(timerInterval);
+        timeLeft = parseInt(timerSelect.value);
+        totalTime = timeLeft;
+        timerDiv.textContent = `Time: ${timeLeft} seconds`;
+        progressBarFill.style.width = '100%';
+        currentText = getRandomText(difficultySelect.value);
+        displayText(currentText);
+        inputText.removeEventListener('input', debouncedCheckTyping);
+        console.log('Test reset:', { difficulty: difficultySelect.value, currentText });
+      } catch (e) {
+        console.error('Error in resetBtn click:', e);
+      }
+    });
+
+    function updateTimer() {
+      try {
+        timeLeft--;
+        timerDiv.textContent = `Time: ${timeLeft} seconds`;
+        const progress = (timeLeft / totalTime) * 100;
+        progressBarFill.style.width = `${progress}%`;
+        document.querySelector('#progress-bar').setAttribute('aria-valuenow', Math.round(progress));
+        if (timeLeft <= 0) {
+          clearInterval(timerInterval);
+          inputText.disabled = true;
+          timerSelect.disabled = false;
+          difficultySelect.disabled = false;
+          calculateResults();
+          inputText.removeEventListener('input', debouncedCheckTyping);
+          console.log('Timer expired');
+        }
+      } catch (e) {
+        console.error('Error in updateTimer:', e);
+      }
+    }
+
+    function checkTyping() {
+      try {
+        const typedText = inputText.value;
+        const typedWords = typedText.split(' ').filter(word => word.length > 0);
+        const sampleWords = currentText.split(' ');
+        console.log('Typing checked:', { typedText, typedWords, sampleWords });
+
+        // Clear previous highlights
+        sampleWords.forEach((_, index) => {
+          const wordSpan = document.getElementById(`word-${index}`);
+          if (wordSpan) {
+            wordSpan.classList.remove('incorrect', 'current');
+          }
+        });
+
+        // Highlight current word
+        if (typedWords.length <= sampleWords.length) {
+          const currentWordIndex = typedWords.length - 1;
+          if (currentWordIndex >= 0) {
+            const wordSpan = document.getElementById(`word-${currentWordIndex}`);
+            if (wordSpan) wordSpan.classList.add('current');
+          }
+        }
+
+        // Highlight incorrect words
+        typedWords.forEach((typedWord, index) => {
+          if (index < sampleWords.length) {
+            const sampleWord = sampleWords[index];
+            const wordSpan = document.getElementById(`word-${index}`);
+            if (wordSpan && typedWord !== sampleWord) {
+              wordSpan.classList.add('incorrect');
+            }
+          }
+        });
+
+        // Check if the entire text matches
+        if (typedText === currentText) {
+          clearInterval(timerInterval);
+          inputText.disabled = true;
+          timerSelect.disabled = false;
+          difficultySelect.disabled = false;
+          calculateResults();
+          inputText.removeEventListener('input', debouncedCheckTyping);
+          console.log('Text matched, test complete');
+        }
+      } catch (e) {
+        console.error('Error in checkTyping:', e);
+      }
+    }
+
+    const debouncedCheckTyping = debounce(checkTyping, 100);
+
+    function calculateResults() {
+      try {
+        const endTime = new Date();
+        const timeTaken = (endTime - startTime) / 1000; // in seconds
+        const wordCount = currentText.split(' ').length;
+        const wpm = Math.round((wordCount / timeTaken) * 60);
+        let errors = 0;
+        const typedText = inputText.value;
+        for (let i = 0; i < currentText.length && i < typedText.length; i++) {
+          if (currentText[i] !== typedText[i]) errors++;
+        }
+        errors += Math.max(0, currentText.length - typedText.length); // Count untyped characters as errors
+        const accuracy = Math.round(((currentText.length - errors) / currentText.length) * 100);
+        const resultMessage = `Typing Speed: ${wpm} WPM | Accuracy: ${accuracy}% | Time Taken: ${(parseInt(timerSelect.value) - timeLeft).toFixed(2)} seconds | Difficulty: ${difficultySelect.value}`;
+        showPopup(resultMessage);
+        saveHighScore(difficultySelect.value.charAt(0).toUpperCase() + difficultySelect.value.slice(1), wpm, accuracy);
+        console.log('Results calculated:', { difficulty: difficultySelect.value, wpm, accuracy, timeTaken });
+      } catch (e) {
+        console.error('Error in calculateResults:', e);
+      }
+    }
+
+    // Enable keyboard navigation
+    document.querySelectorAll('button, select, textarea, a').forEach(element => {
+      element.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' && (element.tagName === 'BUTTON' || element.tagName === 'A')) {
+          element.click();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
